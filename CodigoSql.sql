@@ -193,157 +193,188 @@ CREATE TABLE Coordena (
     fk_Coordenador_CPF INT
 );
  
-ALTER TABLE Online ADD CONSTRAINT FK_Online_2
+ALTER TABLE Online 
+    ADD CONSTRAINT FK_Online_2
     FOREIGN KEY (fk_Emprestimo_ID_Emprestimo)
     REFERENCES Emprestimo (ID_Emprestimo)
     ON DELETE CASCADE;
  
-ALTER TABLE Presencial ADD CONSTRAINT FK_Presencial_2
+ALTER TABLE Presencial 
+    ADD CONSTRAINT FK_Presencial_2
     FOREIGN KEY (fk_Emprestimo_ID_Emprestimo)
     REFERENCES Emprestimo (ID_Emprestimo)
     ON DELETE CASCADE;
  
-ALTER TABLE Professor ADD CONSTRAINT FK_Professor_2
+ALTER TABLE Professor 
+    ADD CONSTRAINT FK_Professor_2
     FOREIGN KEY (fk_Usuario_ID_Usuario)
     REFERENCES Usuario (ID_Usuario)
     ON DELETE CASCADE;
  
-ALTER TABLE Aluno_Matricula ADD CONSTRAINT FK_Aluno_Matricula_2
+ALTER TABLE Aluno_Matricula 
+    ADD CONSTRAINT FK_Aluno_Matricula_2
     FOREIGN KEY (fk_Usuario_ID_Usuario)
     REFERENCES Usuario (ID_Usuario)
     ON DELETE CASCADE;
  
-ALTER TABLE Obrigatoria ADD CONSTRAINT FK_Obrigatoria_2
+ALTER TABLE Obrigatoria 
+    ADD CONSTRAINT FK_Obrigatoria_2
     FOREIGN KEY (fk_Disciplina_Codigo)
     REFERENCES Disciplina (Codigo)
     ON DELETE CASCADE;
  
-ALTER TABLE Eletiva ADD CONSTRAINT FK_Eletiva_2
+ALTER TABLE Eletiva 
+    ADD CONSTRAINT FK_Eletiva_2
     FOREIGN KEY (fk_Disciplina_Codigo)
     REFERENCES Disciplina (Codigo)
     ON DELETE CASCADE;
  
-ALTER TABLE EAD ADD CONSTRAINT FK_EAD_2
+ALTER TABLE EAD 
+    ADD CONSTRAINT FK_EAD_2
     FOREIGN KEY (FK_Aula_Codigo_Turma)
     REFERENCES Aula (Codigo_Turma)
     ON DELETE CASCADE;
  
-ALTER TABLE Presencial ADD CONSTRAINT FK_Presencial_2
+ALTER TABLE Presencial 
+    ADD CONSTRAINT FK_Presencial_2
     FOREIGN KEY (fk_Aula_Codigo_Turma)
     REFERENCES Aula (Codigo_Turma)
     ON DELETE CASCADE;
  
-ALTER TABLE Escreve ADD CONSTRAINT FK_Escreve_1
+ALTER TABLE Escreve 
+    ADD CONSTRAINT FK_Escreve_1
     FOREIGN KEY (fk_Livro_ID_Livro)
     REFERENCES Livro (ID_Livro)
     ON DELETE RESTRICT;
  
-ALTER TABLE Escreve ADD CONSTRAINT FK_Escreve_2
+ALTER TABLE Escreve 
+    ADD CONSTRAINT FK_Escreve_2
     FOREIGN KEY (fk_Autor_Nome)
     REFERENCES Autor (Nome)
     ON DELETE RESTRICT;
  
-ALTER TABLE Contem ADD CONSTRAINT FK_Contem_1
+ALTER TABLE Contem 
+    ADD CONSTRAINT FK_Contem_1
     FOREIGN KEY (fk_Emprestimo_ID_Emprestimo)
     REFERENCES Emprestimo (ID_Emprestimo)
     ON DELETE RESTRICT;
  
-ALTER TABLE Contem ADD CONSTRAINT FK_Contem_2
+ALTER TABLE Contem 
+    ADD CONSTRAINT FK_Contem_2
     FOREIGN KEY (fk_Livro_ID_Livro)
     REFERENCES Livro (ID_Livro)
     ON DELETE SET NULL;
  
-ALTER TABLE Comercializa ADD CONSTRAINT FK_Comercializa_1
+ALTER TABLE Comercializa 
+    ADD CONSTRAINT FK_Comercializa_1
     FOREIGN KEY (fk_Livro_ID_Livro)
     REFERENCES Livro (ID_Livro)
     ON DELETE RESTRICT;
  
-ALTER TABLE Comercializa ADD CONSTRAINT FK_Comercializa_2
+ALTER TABLE Comercializa 
+    ADD CONSTRAINT FK_Comercializa_2
     FOREIGN KEY (fk_Editora_Nome_Editora)
     REFERENCES Editora (Nome_Editora)
     ON DELETE RESTRICT;
  
-ALTER TABLE Efetua_Consulta ADD CONSTRAINT FK_Efetua_Consulta_1
+ALTER TABLE Efetua_Consulta 
+    ADD CONSTRAINT FK_Efetua_Consulta_1
     FOREIGN KEY (fk_Emprestimo_ID_Emprestimo)
     REFERENCES Emprestimo (ID_Emprestimo)
     ON DELETE RESTRICT;
  
-ALTER TABLE Efetua_Consulta ADD CONSTRAINT FK_Efetua_Consulta_2
+ALTER TABLE Efetua_Consulta 
+    ADD CONSTRAINT FK_Efetua_Consulta_2
     FOREIGN KEY (fk_Usuario_ID_Usuario)
     REFERENCES Usuario (ID_Usuario)
     ON DELETE SET NULL;
  
-ALTER TABLE Cuida ADD CONSTRAINT FK_Cuida_1
+ALTER TABLE Cuida 
+    ADD CONSTRAINT FK_Cuida_1
     FOREIGN KEY (fk_Balcao_Biblioteca_ID_Funcao_Biblioteca)
     REFERENCES Balcao_Biblioteca (ID_Funcao_Biblioteca)
     ON DELETE RESTRICT;
  
-ALTER TABLE Cuida ADD CONSTRAINT FK_Cuida_2
+ALTER TABLE Cuida 
+    ADD CONSTRAINT FK_Cuida_2
     FOREIGN KEY (fk_Presencial_fk_Emprestimo_ID_Emprestimo)
     REFERENCES Presencial (fk_Emprestimo_ID_Emprestimo)
     ON DELETE RESTRICT;
  
-ALTER TABLE Entrega ADD CONSTRAINT FK_Entrega_1
+ALTER TABLE Entrega 
+    ADD CONSTRAINT FK_Entrega_1
     FOREIGN KEY (fk_Entregador_ID_Motoboy)
     REFERENCES Entregador (ID_Motoboy)
     ON DELETE RESTRICT;
  
-ALTER TABLE Entrega ADD CONSTRAINT FK_Entrega_2
+ALTER TABLE Entrega 
+    ADD CONSTRAINT FK_Entrega_2
     FOREIGN KEY (fk_Online_fk_Emprestimo_ID_Emprestimo)
     REFERENCES Online (fk_Emprestimo_ID_Emprestimo)
     ON DELETE RESTRICT;
  
-ALTER TABLE Ministra ADD CONSTRAINT FK_Ministra_1
+ALTER TABLE Ministra 
+    ADD CONSTRAINT FK_Ministra_1
     FOREIGN KEY (fk_Professor_Ident, fk_Professor_fk_Usuario_ID_Usuario)
     REFERENCES Professor (Ident, fk_Usuario_ID_Usuario)
     ON DELETE NO ACTION;
  
-ALTER TABLE Ministra ADD CONSTRAINT FK_Ministra_2
+ALTER TABLE Ministra 
+    ADD CONSTRAINT FK_Ministra_2
     FOREIGN KEY (fk_Disciplina_Codigo)
     REFERENCES Disciplina (Codigo)
     ON DELETE RESTRICT;
  
-ALTER TABLE Ministra ADD CONSTRAINT FK_Ministra_3
+ALTER TABLE Ministra 
+    ADD CONSTRAINT FK_Ministra_3
     FOREIGN KEY (fk_Avaliacao_Id_Aluno)
     REFERENCES Avaliacao (Id_Aluno)
     ON DELETE NO ACTION;
  
-ALTER TABLE Estuda ADD CONSTRAINT FK_Estuda_1
+ALTER TABLE Estuda 
+    ADD CONSTRAINT FK_Estuda_1
     FOREIGN KEY (fk_Aluno_Matricula_RG, fk_Aluno_Matricula_fk_Usuario_ID_Usuario, ???)
     REFERENCES Aluno_Matricula (RG, fk_Usuario_ID_Usuario, ???)
     ON DELETE SET NULL;
  
-ALTER TABLE Estuda ADD CONSTRAINT FK_Estuda_2
+ALTER TABLE Estuda 
+    ADD CONSTRAINT FK_Estuda_2
     FOREIGN KEY (fk_Disciplina_Codigo)
     REFERENCES Disciplina (Codigo)
     ON DELETE SET NULL;
  
-ALTER TABLE Assiste ADD CONSTRAINT FK_Assiste_1
+ALTER TABLE Assiste 
+    ADD CONSTRAINT FK_Assiste_1
     FOREIGN KEY (fk_Aula_Codigo_Turma)
     REFERENCES Aula (Codigo_Turma)
     ON DELETE RESTRICT;
  
-ALTER TABLE Assiste ADD CONSTRAINT FK_Assiste_2
+ALTER TABLE Assiste 
+    ADD CONSTRAINT FK_Assiste_2
     FOREIGN KEY (fk_Aluno_Matricula_RG, fk_Aluno_Matricula_fk_Usuario_ID_Usuario, ???)
     REFERENCES Aluno_Matricula (RG, fk_Usuario_ID_Usuario, ???)
     ON DELETE SET NULL;
  
-ALTER TABLE Associada ADD CONSTRAINT FK_Associada_1
+ALTER TABLE Associada 
+    ADD CONSTRAINT FK_Associada_1
     FOREIGN KEY (fk_Aula_Codigo_Turma)
     REFERENCES Aula (Codigo_Turma)
     ON DELETE RESTRICT;
  
-ALTER TABLE Associada ADD CONSTRAINT FK_Associada_2
+ALTER TABLE Associada 
+    ADD CONSTRAINT FK_Associada_2
     FOREIGN KEY (fk_Disciplina_Codigo)
     REFERENCES Disciplina (Codigo)
     ON DELETE RESTRICT;
  
-ALTER TABLE Coordena ADD CONSTRAINT FK_Coordena_1
+ALTER TABLE Coordena 
+    ADD CONSTRAINT FK_Coordena_1
     FOREIGN KEY (fk_Professor_Ident, fk_Professor_fk_Usuario_ID_Usuario)
     REFERENCES Professor (Ident, fk_Usuario_ID_Usuario)
     ON DELETE SET NULL;
  
-ALTER TABLE Coordena ADD CONSTRAINT FK_Coordena_2
+ALTER TABLE Coordena 
+    ADD CONSTRAINT FK_Coordena_2
     FOREIGN KEY (fk_Coordenador_CPF)
     REFERENCES Coordenador (CPF)
     ON DELETE SET NULL;
