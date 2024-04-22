@@ -18,13 +18,28 @@ Este banco de dados oferece um arcabouço abrangente para o gerenciamento eficie
 
 ## Requisitos Implementados
 
-- **Entidades Principais**: Editora, Livro, Emprestimo, Online, Presencial_Biblioteca, Entregador, Balcao_Biblioteca, Usuario, Aluno, Professor, Avaliacao, Coordenador, Autor, Matricula, Disciplina, Obrigatoria, Eletiva, Aula, EAD, Presencial_Escola
+- **Entidades Principais E Seus Atributos**: 
+  - *Editora*: Nome_Editora, Telefone, Email
+  - *Livro*: ID_Livro, Sessao, Numero_De_Pags, Titulo, Genero, Autor
+  - *Emprestimo*: 
+  - *Online*: 
+  - *Presencial_Biblioteca*: 
+  - *Entregador*: 
+  - *Balcao_Biblioteca*: 
+  - *Usuario*: 
+  - *Aluno*: 
+  - *Professor*: 
+  - *Avaliacao*: 
+  - *Coordenador*: 
+  - *Autor*: 
+  - *Matricula*: 
+  - *Disciplina*: 
+  - *Obrigatoria*: 
+  - *Eletiva*: 
+  - *Aula*: 
+  - *EAD*: 
+  - *Presencial_Escola*: 
 
-- **Atributos das Entidades**:
-  - *Livro*: ISBN, Ano de Publicação, Autor, Título, Editora 
-
-- **Relacionamentos entre as Entidades**:
-  - *Autor (ESCREVE) Livro*: 
 
 
 ## Tomada de Decisão
