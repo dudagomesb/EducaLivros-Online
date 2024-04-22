@@ -12,7 +12,7 @@ CREATE TABLE Autor (
     Nacionalidade VARCHAR(60),
     Nome VARCHAR(60) PRIMARY KEY,
     Genero_Literario VARCHAR(60),
-    Data_Nascimento DATE CHECK (Data_de_Nascimento > '0000-00-00')
+    Data_Nascimento DATE CHECK (Data_Nascimento > 0)
 );
 
 CREATE TABLE Usuario (
@@ -28,11 +28,11 @@ CREATE TABLE Usuario (
 
 CREATE TABLE Emprestimo (
     ID_Emprestimo INT PRIMARY KEY,
-    ID_Livro INT NOTNULL,
-    ID_Usuario INT NOTNULL,
-    Data_De_Emprestimo DATE NOTNULL,
-    Data_De_Devolucao_Efetiva DATE NOTNULL,
-    Data_De_Devolucao DATE NOTNULL,
+    ID_Livro INT NOT NULL,
+    ID_Usuario INT NOT NULL,
+    Data_De_Emprestimo DATE NOT NULL,
+    Data_De_Devolucao_Efetiva DATE NOT NULL,
+    Data_De_Devolucao DATE NOT NULL,
     Disponibilidade VARCHAR(60)
 );
 
@@ -43,7 +43,7 @@ CREATE TABLE Balcao_Biblioteca (
 
 CREATE TABLE Editora (
     Nome_Editora VARCHAR(60) PRIMARY KEY,
-    Telefone INT NOTNULL UNIQUE,
+    Telefone INT NOT NULL UNIQUE,
     Email VARCHAR(60)
 );
 
@@ -72,7 +72,7 @@ CREATE TABLE Entregador (
 );
 
 CREATE TABLE Professor (
-    Ident INT UNIQUE NOTNULL,
+    Ident INT NOT NULL UNIQUE ,
     Salario DECIMAL,
     Disciplinas VARCHAR(60),
     fk_Usuario_ID_Usuario INT,
@@ -81,7 +81,7 @@ CREATE TABLE Professor (
 
 CREATE TABLE Aluno_Matricula (
     Mensalidade DECIMAL,
-    RG INT UNIQUE NOTNULL,
+    RG INT NOT NULL UNIQUE ,
     Notas DECIMAL,
     fk_Usuario_ID_Usuario INT,
     Numero INT NOT NULL UNIQUE,
@@ -240,8 +240,8 @@ VALUES (1, 123456789, 'usuario1@example.com', 'Rua A, 123', '1990-01-01', '123.4
 
 -- Inserções na tabela Emprestimo
 INSERT INTO Emprestimo (ID_Emprestimo, ID_Livro, ID_Usuario, Data_De_Emprestimo, Data_De_Devolucao_Efetiva, Data_De_Devolucao, Disponibilidade)
-VALUES (1, 1, 1, '2024-04-01', '2024-04-15', NULL, 'Disponível'),
-       (2, 2, 2, '2024-04-05', NULL, NULL, 'Emprestado');
+VALUES (1, 1, 1, '2024-04-01', '2024-04-15', '2024-05-10', 'Disponível'),
+       (2, 2, 2, '2024-04-05', '2024-04-20', '2024-05-10', 'Emprestado');
 
 -- Inserções na tabela Balcao_Biblioteca
 INSERT INTO Balcao_Biblioteca (Nome_Funcionario, ID_Funcao_Biblioteca)
