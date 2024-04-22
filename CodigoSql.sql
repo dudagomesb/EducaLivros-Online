@@ -1,3 +1,4 @@
+
 CREATE TABLE Livro (
     Genero VARCHAR(60),
     Autor VARCHAR(60),
@@ -341,6 +342,44 @@ VALUES (1, 1),
 INSERT INTO Coordena (fk_Professor_Ident, fk_Professor_fk_Usuario_ID_Usuario, fk_Coordenador_CPF)
 VALUES (101, 3, '12345678900'),
        (102, 4, '98765432100');
+
+-- Atualização de dados na tabela Livro
+UPDATE Livro
+SET Genero = 'Ficção Científica Espacial'
+WHERE ID_Livro = 1;
+
+-- Exclusão de um livro específico da tabela Livro
+DELETE FROM Livro
+WHERE ID_Livro = 2;
+
+-- Atualização de dados na tabela Autor
+UPDATE Autor
+SET Nacionalidade = 'Americano'
+WHERE Nome = 'Isaac Asimov';
+
+-- Exclusão de um autor específico da tabela Autor
+DELETE FROM Autor
+WHERE Nome = 'J.R.R. Tolkien';
+
+-- Atualização de dados na tabela Usuario
+UPDATE Usuario
+SET Email = 'novo_email@example.com'
+WHERE ID_Usuario = 1;
+
+-- Exclusão de um usuário específico da tabela Usuario
+DELETE FROM Usuario
+WHERE ID_Usuario = 2;
+
+-- Atualização de dados na tabela Emprestimo
+UPDATE Emprestimo
+SET Data_De_Devolucao = '2024-04-20'
+WHERE ID_Emprestimo = 1;
+
+-- Exclusão de um empréstimo específico da tabela Emprestimo
+DELETE FROM Emprestimo
+WHERE ID_Emprestimo = 2;
+
+
 
  
 ALTER TABLE Online 
