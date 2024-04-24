@@ -24,24 +24,24 @@ Este banco de dados oferece um arcabouço abrangente para o gerenciamento eficie
 - **Entidades Principais E Seus Atributos**: 
   - *Editora*: Nome_Editora, Telefone, Email
   - *Livro*: ID_Livro, Sessao, Numero_De_Pags, Titulo, Genero, Autor
-  - *Emprestimo*: 
-  - *Online*: 
-  - *Presencial_Biblioteca*: 
-  - *Entregador*: 
-  - *Balcao_Biblioteca*: 
-  - *Usuario*: 
-  - *Aluno*: 
-  - *Professor*: 
-  - *Avaliacao*: 
-  - *Coordenador*: 
-  - *Autor*: 
-  - *Matricula*: 
-  - *Disciplina*: 
-  - *Obrigatoria*: 
-  - *Eletiva*: 
-  - *Aula*: 
-  - *EAD*: 
-  - *Presencial_Escola*: 
+  - *Emprestimo*: ID_Emprestimo, ID_Livro, ID_Usuario, Disponibilidade, Data_de_devolucao, Data_de_emprestimo, Data_de_devolucao_efetiva
+  - *Online*: Aplicativo, Web_site
+  - *Presencial_Biblioteca*: Endereço
+  - *Entregador*: ID_Motoboy, Frete
+  - *Balcao_Biblioteca*: ID_Funcao_Biblioteca, Nome_Funcionario
+  - *Usuario*: ID_Usuario, CPF, Data_de_nascimento, Endereço, Email, Telefone, Nome, Idade
+  - *Aluno*: RG, Notas, Mensalidade
+  - *Professor*: Ident, Diciplinas, Salario
+  - *Avaliacao*: Numero_questao, Modalidade, ID_Aluno
+  - *Coordenador*: CPF, Email, Salario, Telefone
+  - *Autor*: Nome, Genero_Literario, Data_de_nascimento, Nacionalidade
+  - *Matricula*: Numero, Historico_escolar, Materias_matriculadas, Coeficiente_rendimento
+  - *Disciplina*: Horario, Nome, Descricao, Carga_horaria, Codigo
+  - *Obrigatoria*: Percentual_reprovacao, 
+  - *Eletiva*: Percentual_alunos_turma
+  - *Aula*: Codigo_turma, Presenca_aluno, Horario
+  - *EAD*: Plataforma
+  - *Presencial_Escola*: Local
 
 
 
