@@ -108,7 +108,7 @@ UPDATE Emprestimo SET Data_De_Devolucao_Efetiva = '2024-06-24' WHERE ID_Livro = 
 
 Antes de prosseguir com as consultas, insira os dados no banco de dados. Utilize o arquivo txt (`insert-update-delete.txt`) fornecido para realizar os testes.
 
-### 1. Quais são os gêneros mais alugado entre os alunos da escola?
+### 1. Qual é o gênero mais alugado entre os alunos da escola?
 
 Para identificar o gênero mais alugado entre os alunos da escola, execute o seguinte código SQL:
 
@@ -116,8 +116,6 @@ Para identificar o gênero mais alugado entre os alunos da escola, execute o seg
 SELECT Livro.Genero, COUNT() AS Quantidade_Alugada
 FROM Emprestimo
 JOIN Livro ON Emprestimo.ID_Livro = Livro.ID_Livro
--- Se necessário, você pode adicionar a tabela Usuario para filtrar empréstimos de alunos específicos
--- JOIN Usuario ON Emprestimo.ID_Usuario = Usuario.ID_Usuario
 GROUP BY Livro.Genero
 ORDER BY Quantidade_Alugada DESC
 LIMIT 1
@@ -193,7 +191,7 @@ SELECT * FROM Aluno_Matricula WHERE Coeficiente_Rendimento = (SELECT MAX(Coefici
 2. Atualize os dados do aluno com o maior coeficiente de rendimento:
 
 ```sql
-SELECT apply_discount();
+SELECT Desconto_Matricula();
 ```
 
 3. Verifique se a mensalidade foi atualizada para 0:

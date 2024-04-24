@@ -299,5 +299,19 @@ ALTER TABLE Assiste ADD CONSTRAINT FK_Assiste_2
     FOREIGN KEY (fk_Aula_Codigo_Turma)
     REFERENCES Aula (Codigo_Turma)
     ON DELETE RESTRICT;
+
     
- 
+CREATE OR REPLACE FUNCTION Desconto_Matricula() RETURNS VOID AS $$
+DECLARE
+    aluno_max_coeficiente INT;
+BEGIN
+    SELECT fk_Usuario_ID_Usuario INTO aluno_max_coeficiente
+    FROM Aluno_Matricula
+    ORDER BY Coeficiente_Rendimento DESC
+    LIMIT 1;
+
+    UPDATE Aluno_Matricula
+    SET Mensalidade = 0
+    WHERE fk_Usuario_ID_Usuario = aluno_max_coeficiente;
+END; $$
+LANGUAGE plpgsql;
