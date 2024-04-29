@@ -218,7 +218,7 @@ Oferecemos uma ampla coleção literária que abrange desde livros didáticos at
 
 ## 2 - Easter Egg
 
-*Easter Egg:* Recomendações Personalizadas com base no histórico de leitura dos usuários? 
+*Easter Egg:* Recomendações Personalizadas com base no histórico de leitura dos usuários.
 
 Para ativar o Easter Egg, siga estes passos:
 
