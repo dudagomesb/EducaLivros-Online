@@ -204,18 +204,31 @@ SELECT * FROM Aluno_Matricula;
 
 ## Roteiro do pitch
 
+### Nosso roteiro de venda apresenta os principais pontos para promover o Banco Educalivros como uma solução abrangente e inovadora para a gestão educacional e bibliotecária. Destacamos os seguintes pontos:
+
+*- Descrição do Projeto:*  EducaLivros é uma plataforma que integra uma escola com uma livraria, oferecendo uma abordagem única para o aprendizado e a promoção da leitura.
+
+*- A Essência da EducaLivros:* Nosso banco de dados combina o ambiente acadêmico de uma escola com a riqueza cultural de uma livraria, proporcionando uma experiência educacional única e enriquecedora. Uma escola bem gerenciada, além de promover uma melhor eficiência, transparência e qualidade na gestão educacional, pode ser enriquecida pela presença de uma livraria bem gerenciada, estimulando o aprendizado e enriquecendo o ambiente educacional.
+
+*- Principais Características:* 
+Oferecemos uma ampla coleção literária que abrange desde livros didáticos até obras literárias clássicas e materiais de referência. Nosso sistema de gerenciamento de livros permite catalogar e administrar com facilidade uma variedade diversificada de obras, fornecendo informações detalhadas sobre título, autor, editora, gênero e número de páginas. Além disso, nosso ambiente educacional é enriquecido com espaços dedicados à leitura, pesquisa e interação com os materiais disponíveis, proporcionando uma experiência de aprendizado envolvente e estimulante.
+
+*Por que usar Educa-Livros? :* Acompanhamento do progresso estudantil, estimulando decisões estratégicas na gestão, com atendimento personalizado, que soluciona as necessidades dos alunos e melhora rentabilidade do seu negócio.
+
+
 ## 2 - Easter Egg
 
-*Easter Egg:* Aluno com o maior coeficiente de rendimento ganha 100% de desconto na matrícula.
-
-Que tal implementar uma seção de "Recomendações Personalizadas" com base no histórico de leitura dos usuários? 
+*Easter Egg:* Que tal implementar uma seção de "Recomendações Personalizadas" com base no histórico de leitura dos usuários? 
 
 Para ativar o Easter Egg, siga estes passos:
 
 1. "Recomendações Personalizadas":
 
 ```sql
-SELECT * FROM Aluno_Matricula WHERE Coeficiente_Rendimento = (SELECT MAX(Coeficiente_Rendimento) FROM Aluno_Matricula);
+SELECT DISTINCT l.id_livro, l.genero
+FROM emprestimo e
+JOIN livro l ON e.id_livro = l.id_livro
+WHERE e.id_usuario = (/* Inserir id_usuario desejado */);
 ```
 
 
