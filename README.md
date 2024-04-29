@@ -44,6 +44,7 @@ Este banco de dados oferece um arcabouço abrangente para o gerenciamento eficie
   - *Presencial_Escola*: Local
 
 
+# Projeto 2: Criação do Banco de dados
 
 ## Data Manipulation Language (DML)
 
@@ -176,7 +177,7 @@ GROUP BY
     Aula.Codigo_Turma;
 ```
 
-## Easter Egg
+## 1 - Easter Egg
 
 *Easter Egg:* Aluno com o maior coeficiente de rendimento ganha 100% de desconto na matrícula.
 
@@ -199,3 +200,23 @@ SELECT Desconto_Matricula();
 ```sql
 SELECT * FROM Aluno_Matricula;
 ```
+# Projeto 3: Pitch
+
+## Roteiro do pitch
+
+## 2 - Easter Egg
+
+*Easter Egg:* Aluno com o maior coeficiente de rendimento ganha 100% de desconto na matrícula.
+
+Que tal implementar uma seção de "Recomendações Personalizadas" com base no histórico de leitura dos usuários? 
+
+Para ativar o Easter Egg, siga estes passos:
+
+1. "Recomendações Personalizadas":
+
+```sql
+SELECT * FROM Aluno_Matricula WHERE Coeficiente_Rendimento = (SELECT MAX(Coeficiente_Rendimento) FROM Aluno_Matricula);
+```
+
+
+
