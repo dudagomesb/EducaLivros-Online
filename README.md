@@ -17,7 +17,11 @@ O banco de dados apresentado é uma estrutura complexa que abrange várias entid
 Este banco de dados oferece um arcabouço abrangente para o gerenciamento eficiente de uma biblioteca e atividades educacionais, desde o cadastro de materiais até o controle de empréstimos e avaliações acadêmicas. Os dados são estruturados de forma a refletir as interações entre os diversos componentes do sistema, facilitando a busca e recuperação de informações relevantes. As restrições de chave estrangeira garantem a consistência dos dados e ajudam a manter a integridade do banco de dados, enquanto as operações de exclusão são cuidadosamente configuradas para preservar a coesão do sistema.
 
 ## Modelo Lógico
-![alt text](Lógico_2.png)
+![Logico_Banco_de_Dados](Lógico_2.png)
+
+## Modelo Conceitual
+![Projeto_Banco_de_dados_concluido](https://github.com/dudagomesb/EducaLivros-Online/assets/105806830/35673f62-4713-4a38-b549-c980190558a6)
+
 
 ## Requisitos Implementados
 
