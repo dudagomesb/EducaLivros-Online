@@ -20,7 +20,7 @@ Este banco de dados oferece um arcabouço abrangente para o gerenciamento eficie
 ![Logico_Banco_de_Dados](Lógico_2.png)
 
 ## Modelo Conceitual
-![Projeto_Banco_de_dados_concluido](https://github.com/dudagomesb/EducaLivros-Online/assets/105806830/35673f62-4713-4a38-b549-c980190558a6)
+![Projeto_Banco_de_dados_concluido](1_Projeto_Banco_de_dados_concluido_atualizado.png)
 
 
 ## Requisitos Implementados
