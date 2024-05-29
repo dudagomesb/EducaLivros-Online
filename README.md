@@ -250,12 +250,13 @@ WHERE e.id_usuario = (/* Inserir id_usuario desejado */);
 
 ## Triggers
 
+Obs: *Para saber detalhadamente como usar os Triggers, consulte o arquivo `trigger.md` presente neste repositório. Temos um passo a passo para cada Trigger* apresentado abaixo.
+
 ### Trigger 1: Guardando Alterações
 
 Este trigger tem o objetivo de registrar todas as alterações (inserções, atualizações e deleções) realizadas na tabela `Usuario` em uma tabela de auditoria chamada `Usuario_Audit`. Isso permite manter um histórico das operações realizadas, facilitando o rastreamento das mudanças feitas nos registros dos usuários.
 
 1. **Criação da Função**:
-
 ```sql
 CREATE OR REPLACE FUNCTION log_usuario_changes()
 RETURNS TRIGGER AS $$
@@ -274,53 +275,15 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 ```
-
-
- 2. **Agora, precisamos criar nossa tabela que irá armazenar as operações:**
-
- ```sql
-CREATE TABLE Usuario_Audit (
-    audit_id SERIAL PRIMARY KEY,
-    operation VARCHAR(10),
-    usuario_id INT,
-    usuario_nome VARCHAR,
-    change_time TIMESTAMP
-);
- ```
-3. **Por fim, criar nosso Trigger:**
-
+2. **Criar nosso Trigger:**
 ```sql
 CREATE TRIGGER usuario_changes_trigger
 AFTER INSERT OR UPDATE OR DELETE ON Usuario
 FOR EACH ROW EXECUTE FUNCTION log_usuario_changes();
 ```
-*Para testar é bem simples, siga o passo a passo:* 
-
-1. **Insira um novo Usuário :** 
-
-```sql
-INSERT INTO Usuario (ID_Usuario, Telefone, Email, Endereco, Data_de_Nascimento, CPF, Nome, Idade)
-VALUES (11, '555555555', 'teste.usuario@example.com', 'Rua K, 808', '2000-01-01', '123.456.789-00', 'Teste Usuario', 24);
-```
-
-2. **Atualize esse Usuário :** 
-```sql
-UPDATE Usuario SET Nome = 'Teste Usuario Atualizado' WHERE ID_Usuario = 11;
-```
-
-3. **Exclua o Usuário:** 
-```sql
-DELETE FROM Usuario WHERE ID_Usuario = 11;
-```
-4. Agora consulte a tabela auxiliar: 
-```sql
-SELECT * FROM Usuario_Audit;
-```
-
 ### Trigger 2: Guardando Alterações
 
 Este trigger tem o mesmo objetivo de registrar todas as alterações (inserções, atualizações e deleções), mas agora na tabela emprestimo. 
-
 
 1. **Criação da Função**:
 ```sql
@@ -342,43 +305,12 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
- 2. **Agora, precisamos criar nossa tabela que irá armazenar as operações:**
- ```sql
-CREATE TABLE Emprestimo_Audit (
-    audit_id SERIAL PRIMARY KEY,
-    operation VARCHAR(10),
-    emprestimo_id INT,
-    livro_id INT,
-    usuario_id INT,
-    data_emprestimo DATE,
-    data_devolucao DATE,
-    data_devolucao_efetiva DATE,
-    disponibilidade VARCHAR,
-    change_time TIMESTAMP
-);
- ```
 
-3. **Por fim, criar nosso Trigger:**
+2. **Criar nosso Trigger:**
 ```sql
 CREATE TRIGGER emprestimo_changes_trigger
 AFTER INSERT OR UPDATE OR DELETE ON Emprestimo
 FOR EACH ROW EXECUTE FUNCTION log_emprestimo_changes();
-```
-4. **Teste Resumido:**
-
-```sql
---- Inserção
-INSERT INTO Emprestimo (ID_Emprestimo, ID_Livro, ID_Usuario, Data_De_Emprestimo, Data_De_Devolucao, Data_De_Devolucao_Efetiva, Disponibilidade)
-VALUES (1, 101, 1001, '2024-05-27', '2024-06-03', NULL, 'Emprestado');
-
---- Atualizar
-UPDATE Emprestimo SET Data_De_Devolucao_Efetiva = '2024-06-02', Disponibilidade = 'Disponível' WHERE ID_Emprestimo = 1;
-
---- Deletar
-DELETE FROM Emprestimo WHERE ID_Emprestimo = 1;
-
---- Verifique se funcionou ;)
-SELECT * FROM Emprestimo_Audit;
 ```
 
 ### Trigger 3: Validação de Dados
@@ -408,12 +340,6 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER validate_phone_trigger
 BEFORE INSERT OR UPDATE ON Usuario
 FOR EACH ROW EXECUTE FUNCTION validate_phone_format();
-```
-
-2. **Testando nosso Trigger**:
-```sql
-INSERT INTO Usuario (ID_Usuario, Telefone, Email, Endereco, Data_de_Nascimento, CPF, Nome, Idade)
-VALUES (1003, '123-456-7890', 'teste2@example.com', 'Rua XYZ, 456', '1980-01-01', '987.654.321-00', 'Outro Teste', 40);
 ```
 
 
