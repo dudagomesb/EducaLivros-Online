@@ -341,16 +341,91 @@ CREATE TRIGGER validate_phone_trigger
 BEFORE INSERT OR UPDATE ON Usuario
 FOR EACH ROW EXECUTE FUNCTION validate_phone_format();
 ```
+### Stored Procedures
 
+#### Stored Procedure 1: Total de Empréstimos de um Livro
 
+Esta stored procedure calcula o total de empréstimos de um determinado livro, identificado pelo seu ID.
 
+```sql
+CREATE OR REPLACE FUNCTION Total_Emprestimos_Livro(livro_id INT) RETURNS INT AS $$
+DECLARE
+    total_emprestimos INT;
+BEGIN
+    SELECT COUNT(*) INTO total_emprestimos
+    FROM Emprestimo
+    WHERE ID_Livro = livro_id;
 
+    RETURN total_emprestimos;
+END; $$
+LANGUAGE plpgsql;
+```
 
+**Como usar:**
 
+Para obter o total de empréstimos de um livro com ID 1, execute:
 
+```sql
+SELECT Total_Emprestimos_Livro(1);
+```
 
- 
+---
 
+#### Stored Procedure 2: Atualizar Disponibilidade de um Livro
+
+Esta stored procedure atualiza a disponibilidade de um livro com base na data de devolução. Se a data de devolução efetiva for nula (o livro ainda não foi devolvido), ele será marcado como "Indisponível". Caso contrário, será marcado como "Disponível".
+
+```sql
+CREATE OR REPLACE PROCEDURE Atualizar_Disponibilidade_Livro()
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    UPDATE Emprestimo
+    SET Disponibilidade = CASE
+        WHEN Data_De_Devolucao_Efetiva IS NULL THEN 'Indisponível'
+        ELSE 'Disponível'
+    END;
+END; $$
+```
+
+**Como usar:**
+
+Para atualizar a disponibilidade de todos os livros, execute:
+
+```sql
+CALL Atualizar_Disponibilidade_Livro();
+```
+
+---
+
+#### Stored Procedure 3: Atualizar o Saldo de Mensalidades
+
+Esta stored procedure atualiza o saldo de mensalidades dos alunos com base no coeficiente de rendimento.
+
+```sql
+CREATE OR REPLACE PROCEDURE Atualizar_Saldo_Mensalidades()
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    UPDATE Aluno_Matricula
+    SET Mensalidade = Mensalidade * 0.9
+    WHERE Coeficiente_Rendimento >= 8.0;
+
+    UPDATE Aluno_Matricula
+    SET Mensalidade = Mensalidade * 1.1
+    WHERE Coeficiente_Rendimento < 8.0;
+END; $$
+```
+
+**Como usar:**
+
+Para atualizar o saldo de mensalidades de todos os alunos, execute:
+
+```sql
+CALL Atualizar_Saldo_Mensalidades();
+```
+
+---
 
 
 
