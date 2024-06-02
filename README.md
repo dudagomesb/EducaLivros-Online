@@ -425,6 +425,59 @@ Para atualizar o saldo de mensalidades de todos os alunos, execute:
 CALL Atualizar_Saldo_Mensalidades();
 ```
 
+### Views
+#### View 1: Atraso de livros
+
+Essa view serve para visualizar os alunos que atrasaram a devolução de livros.
+
+```sql
+CREATE VIEW DataEmprestimo as 
+SELECT id_emprestimo,
+	   id_livro,
+	   id_usuario,
+	   disponibilidade
+FROM emprestimo
+WHERE data_de_devolucao < data_de_devolucao_efetiva
+```
+
+**Como usar:**
+
+Para chamar a view, utilize:
+
+```sql
+SELECT * FROM DataEmprestimo;
+```
+
+#### View 2: Melhores notas
+
+Essa view serve para visualizar informações dos alunos com as melhores notas (8.5 pra cima)
+
+```sql
+CREATE VIEW AlunosMelhoresNotas AS 
+SELECT u.id_usuario,
+       u.nome,
+       u.telefone,
+       u.email,
+       u.endereco,
+       u.data_de_nascimento,
+       u.cpf,
+       u.idade,
+       am.coeficiente_rendimento,
+       am.notas,
+       am.materias_matriculadas,
+       am.historico_escolar
+FROM usuario u 
+INNER JOIN aluno_matricula am ON u.id_usuario = am.fk_usuario_id_usuario
+WHERE am.coeficiente_rendimento >= 8.5;
+```
+
+**Como usar:**
+
+Para chamar a view, utilize:
+
+```sql
+SELECT * FROM AlunosMelhoresNotas;
+```
 ---
 
 
