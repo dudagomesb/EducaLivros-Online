@@ -483,13 +483,13 @@ SELECT * FROM AlunosMelhoresNotas;
 
 Foram definidos três níveis de controle de acesso para conceder permissões específicas na manipulação de dados do esquema. Os cargos servem como um filtro para que um usuário possa acessar, deletar, atualizar ou apagar dados selecionados, conforme as permissões atribuídas. Os cargos definidos são: Professor, Coordenador e Diretor.
 <br/>
-### 1. Aqui foi criado os cargos:
+#### 1. Aqui foi criado os cargos:
 ```sql
 CREATE ROLE professor;
 CREATE ROLE coordenador;
 CREATE ROLE diretor;
 ```
-### 2. Aqui foi criado os usuários:
+#### 2. Aqui foi criado os usuários:
 ```sql
 CREATE USER professor_lucas WITH PASSWORD '123';
 GRANT professor TO professor_lucas;
@@ -502,7 +502,7 @@ GRANT coordenador TO coordenador_fulano;
 CREATE USER diretor_fulano WITH PASSWORD '123';
 GRANT diretor TO diretor_fulano;
 ```
-### 3. Aqui foi definido suas respectivas permissões, as tabelas que cada cargo tem acesso e que operação é permitida realizar com esses dados:
+#### 3. Aqui foi definido suas respectivas permissões, as tabelas que cada cargo tem acesso e que operação é permitida realizar com esses dados:
 Professor:
 ```sql
 GRANT SELECT ON disciplina TO professor;
@@ -531,10 +531,10 @@ GRANT ALL PRIVILEGES ON entregador TO diretor;
 GRANT ALL PRIVILEGES ON emprestimo TO diretor;
 ```
 
-#### Se um usuário tentar realizar uma operação ou acessar uma tabela sem permissão, a seguinte mensagem de erro é exibida:
+#### Se um usuário tentar realizar uma operação ou acessar uma tabela sem permissão:
 ![MensagemDeErro](https://github.com/dudagomesb/EducaLivros-Online/assets/105806830/dbbd0992-f47e-471a-8b9f-2ed169ed3a3c)
 
-#### Usuários que escreverem a senha ou nome de usuário incorretamente não irão ter acesso as permissões e a seguinte mensagem de erro é exibida:
+#### Usuários que escreverem a senha ou nome de usuário incorretamente não irão ter acesso as permissões:
 ![ErroSenha](https://github.com/dudagomesb/EducaLivros-Online/assets/105806830/a9acd196-ef5d-4ad0-af05-7256c1da495b)
 Com essas medidas, torna o banco de dados mais direcionado e protegido de situações adversas em relação aos dados do ambiente escolar.
 
