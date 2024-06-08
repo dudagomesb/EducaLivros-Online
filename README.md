@@ -25,7 +25,7 @@ Este banco de dados oferece um arcabouço abrangente para o gerenciamento eficie
 
 ## Requisitos Implementados
 
-- **Entidades Principais E Seus Atributos**: 
+- **Entidades Principais E Seus Atributos**:
   - *Editora*: Nome_Editora, Telefone, Email
   - *Livro*: ID_Livro, Sessao, Numero_De_Pags, Titulo, Genero, Autor
   - *Emprestimo*: ID_Emprestimo, ID_Livro, ID_Usuario, Disponibilidade, Data_de_devolucao, Data_de_emprestimo, Data_de_devolucao_efetiva
@@ -41,7 +41,7 @@ Este banco de dados oferece um arcabouço abrangente para o gerenciamento eficie
   - *Autor*: Nome, Genero_Literario, Data_de_nascimento, Nacionalidade
   - *Matricula*: Numero, Historico_escolar, Materias_matriculadas, Coeficiente_rendimento
   - *Disciplina*: Horario, Nome, Descricao, Carga_horaria, Codigo
-  - *Obrigatoria*: Percentual_reprovacao, 
+  - *Obrigatoria*: Percentual_reprovacao,
   - *Eletiva*: Percentual_alunos_turma
   - *Aula*: Codigo_turma, Presenca_aluno, Horario
   - *EAD*: Plataforma
@@ -63,26 +63,26 @@ Também disponibilizamos um arquivo insert-update-delete.txt que contém diversa
 *Aqui abaixo temos alguns exemplos:*
 
 ```sql
-INSERT INTO Editora (Nome_Editora, Telefone, Email) 
-VALUES 
+INSERT INTO Editora (Nome_Editora, Telefone, Email)
+VALUES
 ('Companhia das Letras', '+55 11 9999-9999', 'contato@companhiadasletras.com.br'),
 ('Penguin Random House', '+1 212-782-9000', 'info@penguinrandomhouse.com'),
 ('HarperCollins', '+1 212-207-7000', 'webmaster@harpercollins.com');
 
-INSERT INTO Usuario (ID_Usuario, Telefone, Email, Endereco, Data_de_Nascimento, CPF, Nome, Idade) 
-VALUES 
+INSERT INTO Usuario (ID_Usuario, Telefone, Email, Endereco, Data_de_Nascimento, CPF, Nome, Idade)
+VALUES
 (1, '+55 11 1234-5678', 'fulano@gmail.com', 'Rua A, 123', '1990-01-15', '123.456.789-00', 'Fulano de Tal', 34),
 (2, '+55 11 9876-5432', 'beltrano@gmail.com', 'Rua B, 456', '1985-05-20', '987.654.321-00', 'Beltrano da Silva', 39),
 (3, '+55 11 1111-2222', 'ciclano@gmail.com', 'Rua C, 789', '2000-12-10', '111.222.333-00', 'Ciclano Pereira', 24);
 
-INSERT INTO Livro (Titulo, ID_Livro, Sessao, Numeros_De_Pags, Autor, Ano, Genero, Numero, fk_Emprestimo_ID_Emprestimo, fk_Editora_Nome_Editora) 
-VALUES 
+INSERT INTO Livro (Titulo, ID_Livro, Sessao, Numeros_De_Pags, Autor, Ano, Genero, Numero, fk_Emprestimo_ID_Emprestimo, fk_Editora_Nome_Editora)
+VALUES
 ('Dom Casmurro', 1, 'Ficção', 256, 'Machado de Assis', 1899, 'Romance', 101, NULL, 'Companhia das Letras'),
 ('Os Miseráveis', 2, 'Ficção', 1488, 'Victor Hugo', 1862, 'Romance', 102, NULL, 'Penguin Random House'),
 ('1984', 3, 'Ficção', 328, 'George Orwell', 1949, 'Ficção Científica', 103, NULL, 'HarperCollins');
 
-INSERT INTO Emprestimo (ID_Emprestimo, ID_Livro, ID_Usuario, Data_De_Emprestimo, Data_De_Devolucao_Efetiva, Data_De_Devolucao, Disponibilidade) 
-VALUES 
+INSERT INTO Emprestimo (ID_Emprestimo, ID_Livro, ID_Usuario, Data_De_Emprestimo, Data_De_Devolucao_Efetiva, Data_De_Devolucao, Disponibilidade)
+VALUES
 (101, 1, 1, '2024-04-20', '2024-05-10', NULL, 'Disponível'),
 (102, 2, 2, '2024-04-15', NULL, NULL, 'Indisponível'),
 (103, 3, 3, '2024-04-10', NULL, NULL, 'Indisponível');
@@ -177,15 +177,15 @@ GROUP BY
 Para calcular o percentual de presença dos alunos nas aulas, utilize o seguinte código SQL:
 
 ```sql
-SELECT 
+SELECT
     Aula.Codigo_Turma AS Codigo_Turma,
     COUNT(CASE WHEN Aula.Presenca_Alunos = 'Presente' THEN 1 END) AS Alunos_Presentes,
     COUNT(CASE WHEN Aula.Presenca_Alunos = 'Ausente' THEN 1 END) AS Alunos_Ausentes,
     COUNT() AS Total_Alunos,
     (COUNT(CASE WHEN Aula.Presenca_Alunos = 'Presente' THEN 1 END) 100.0 / COUNT(*)) AS Percentual_Presenca
-FROM 
+FROM
     Aula
-GROUP BY 
+GROUP BY
     Aula.Codigo_Turma;
 ```
 
@@ -222,7 +222,7 @@ SELECT * FROM Aluno_Matricula;
 
 *- A Essência da EducaLivros:* Nosso banco de dados combina o ambiente acadêmico de uma escola com a riqueza cultural de uma livraria, proporcionando uma experiência educacional única e enriquecedora. Uma escola bem gerenciada, além de promover uma melhor eficiência, transparência e qualidade na gestão educacional, pode ser enriquecida pela presença de uma livraria bem gerenciada, estimulando o aprendizado e enriquecendo o ambiente educacional.
 
-*- Principais Características:* 
+*- Principais Características:*
 Oferecemos uma ampla coleção literária que abrange desde livros didáticos até obras literárias clássicas e materiais de referência. Nosso sistema de gerenciamento de livros permite catalogar e administrar com facilidade uma variedade diversificada de obras, fornecendo informações detalhadas sobre título, autor, editora, gênero e número de páginas. Além disso, nosso ambiente educacional é enriquecido com espaços dedicados à leitura, pesquisa e interação com os materiais disponíveis, proporcionando uma experiência de aprendizado envolvente e estimulante.
 
 *Por que usar Educa-Livros? :* Pode ser feito um acompanhamento do progresso estudantil, estimulando decisões estratégicas na gestão, com atendimento personalizado, que soluciona as necessidades dos alunos e melhora rentabilidade do seu negócio.
@@ -283,7 +283,7 @@ FOR EACH ROW EXECUTE FUNCTION log_usuario_changes();
 ```
 ### Trigger 2: Guardando Alterações
 
-Este trigger tem o mesmo objetivo de registrar todas as alterações (inserções, atualizações e deleções), mas agora na tabela emprestimo. 
+Este trigger tem o mesmo objetivo de registrar todas as alterações (inserções, atualizações e deleções), mas agora na tabela emprestimo.
 
 1. **Criação da Função**:
 ```sql
@@ -328,7 +328,7 @@ BEGIN
         -- Se não atender, lançar um erro e impedir a inserção
         RAISE EXCEPTION 'O telefone deve seguir o formato (XX) XXXX-XXXX';
     END IF;
-    
+
     -- Se o telefone estiver no formato correto, permitir a inserção
     RETURN NEW;
 END;
@@ -341,7 +341,7 @@ CREATE TRIGGER validate_phone_trigger
 BEFORE INSERT OR UPDATE ON Usuario
 FOR EACH ROW EXECUTE FUNCTION validate_phone_format();
 ```
-### Stored Procedures
+## Stored Procedures
 
 #### Stored Procedure 1: Total de Empréstimos de um Livro
 
@@ -425,13 +425,13 @@ Para atualizar o saldo de mensalidades de todos os alunos, execute:
 CALL Atualizar_Saldo_Mensalidades();
 ```
 
-### Views
+## Views
 #### View 1: Atraso de livros
 
 Essa view serve para visualizar os alunos que atrasaram a devolução de livros.
 
 ```sql
-CREATE VIEW DataEmprestimo as 
+CREATE VIEW DataEmprestimo as
 SELECT id_emprestimo,
 	   id_livro,
 	   id_usuario,
@@ -453,7 +453,7 @@ SELECT * FROM DataEmprestimo;
 Essa view serve para visualizar informações dos alunos com as melhores notas (8.5 pra cima)
 
 ```sql
-CREATE VIEW AlunosMelhoresNotas AS 
+CREATE VIEW AlunosMelhoresNotas AS
 SELECT u.id_usuario,
        u.nome,
        u.telefone,
@@ -466,7 +466,7 @@ SELECT u.id_usuario,
        am.notas,
        am.materias_matriculadas,
        am.historico_escolar
-FROM usuario u 
+FROM usuario u
 INNER JOIN aluno_matricula am ON u.id_usuario = am.fk_usuario_id_usuario
 WHERE am.coeficiente_rendimento >= 8.5;
 ```
@@ -537,6 +537,154 @@ GRANT ALL PRIVILEGES ON emprestimo TO diretor;
 #### Usuários que escreverem a senha ou nome de usuário incorretamente não irão ter acesso as permissões:
 ![ErroSenha](https://github.com/dudagomesb/EducaLivros-Online/assets/105806830/a9acd196-ef5d-4ad0-af05-7256c1da495b)
 Com essas medidas, torna o banco de dados mais direcionado e protegido de situações adversas em relação aos dados do ambiente escolar.
+
+## Normalização para a Terceira Forma Normal (3NF)
+
+**Antes de tudo: Colocamos um arquivo Sql (CodigoSqlRevisado.sql) onde tem todas as mudanças nas tabelas.**
+
+A Terceira Forma Normal (3NF) é uma forma de organização de um banco de dados que tem como objetivo eliminar a redundância de dados e garantir a integridade dos mesmos. Para que uma tabela esteja na 3NF, ela deve:
+
+- Estar na Segunda Forma Normal (2NF).
+- Não ter dependências transitivas. Isto significa que casda atributo não-chave deve depender somente da chave primária e não de outros atributos não-chave.
+
+Como criamos nosso modelo no Brmodelo, boa parte da nossa tabela já está na terceira forma normal, só precisamos ajustar algumas coisas descritas abaixo:
+
+### Passos para Normalização:
+
+1. **Análise do Esquema Atual:**
+
+   Vamos revisar o esquema atual das tabelas principais:
+
+   ```sql
+   CREATE TABLE Livro (
+    Titulo VARCHAR,
+    ID_Livro INT PRIMARY KEY,
+    Sessao VARCHAR,
+    Numeros_De_Pags INT,
+    Autor VARCHAR,
+    Ano INT,
+    Genero VARCHAR,
+    Numero INT,
+    fk_Emprestimo_ID_Emprestimo INT,
+    fk_Editora_Nome_Editora VARCHAR
+   );
+
+   CREATE TABLE Autor (
+    Nacionalidade VARCHAR,
+    Nome VARCHAR PRIMARY KEY,
+    Genero_Literario VARCHAR,
+    Data_Nascimento DATE
+   );
+
+   CREATE TABLE Usuario (
+    ID_Usuario INT PRIMARY KEY,
+    Telefone VARCHAR,
+    Email VARCHAR,
+    Endereco VARCHAR,
+    Data_de_Nascimento DATE,
+    CPF VARCHAR,
+    Nome VARCHAR,
+    Idade INT
+   );
+
+   CREATE TABLE Emprestimo (
+    ID_Emprestimo INT PRIMARY KEY,
+    ID_Livro INT,
+    ID_Usuario INT,
+    Data_De_Emprestimo DATE,
+    Data_De_Devolucao_Efetiva DATE,
+    Data_De_Devolucao DATE,
+    Disponibilidade VARCHAR
+   );
+
+2. **Eliminação de Dependências Transitivas (3NF):**
+
+   Precisamos então, revisar cada tabela e identificar possíveis dependências transitivas.
+
+    - Dependência transitiva: fk_Emprestimo_ID_Emprestimo e fk_Editora_Nome_Editora não dependem diretamente da chave primária ID_Livro, mas sim de outras entidades (Emprestimo e Editora).
+
+    Para resolver isso, podemos separar os dados relacionados à editora em uma tabela separada:
+
+    ```sql
+    CREATE TABLE Livro (
+    ID_Livro INT PRIMARY KEY,
+    Titulo VARCHAR,
+    Sessao VARCHAR,
+    Numeros_De_Pags INT,
+    Autor VARCHAR,
+    Ano INT,
+    Genero VARCHAR,
+    Numero INT
+    );
+    CREATE TABLE Livro_Emprestimo (
+    ID_Livro INT,
+    ID_Emprestimo INT,
+    PRIMARY KEY (ID_Livro, ID_Emprestimo),
+    FOREIGN KEY (ID_Livro) REFERENCES Livro(ID_Livro),
+    FOREIGN KEY (ID_Emprestimo) REFERENCES Emprestimo(ID_Emprestimo)
+    );
+    CREATE TABLE Livro_Editora (
+    ID_Livro INT,
+    Nome_Editora VARCHAR,
+    PRIMARY KEY (ID_Livro, Nome_Editora),
+    FOREIGN KEY (ID_Livro) REFERENCES Livro(ID_Livro),
+    FOREIGN KEY (Nome_Editora) REFERENCES Editora(Nome_Editora)
+    );
+    ```
+3. **Adição de chaves estrangeiras (FOREIGN KEY):**
+
+    Adicionamos, chaves estrangeiras (FOREIGN KEY) em algumas tabelas que não tinham, como por exemplo na tabela Aula:
+
+    ```sql
+    --- Tabela Aula Antiga
+    CREATE TABLE Aula (
+    Horario TIME,
+    Presenca_Alunos VARCHAR,
+    Codigo_Turma INT PRIMARY KEY,
+    fk_Disciplina_Codigo INT
+    );
+
+    --- Tabela Aula Nova
+    CREATE TABLE Aula (
+    Horario TIME,
+    Presenca_Alunos VARCHAR,
+    Codigo_Turma INT PRIMARY KEY,
+    fk_Disciplina_Codigo INT,
+    FOREIGN KEY (fk_Disciplina_Codigo) REFERENCES Disciplina(Codigo)
+    );
+    ```
+    Vemos que a coluna fk_Disciplina_Codigo na tabela Aula é uma chave estrangeira que referencia a coluna Codigo na tabela Disciplina. Isso estabelece uma relação entre as aulas e as disciplinas, garantindo integridade referencial.
+
+    Foram adicionados chaves estrangeiras para as seguintes tabelas:
+    - Tabela Aula.
+    - Tabela Obrigatória e Tabela Eletiva.
+    - Tabela Avaliação.
+    - Tabela EAD e Tabela Presencial_Escola.
+    - Tabela Coordenador.
+    - Tabela Escreve.
+    - Tabela Efetua_Consulta.
+    - Tabela Auxilia, Tabela Ministra e Tabela Estuda.
+
+## Crud com o Framework Koa.js
+
+**Implementamos nosso CRUD com o Framework chamado Koa.js.**
+
+Escolhemos o Koa por algumas razões importantes:
+
+Primeiro, sua integração perfeita com o Node.js e a familiaridade com o JavaScript nos permitiram começar rapidamente, sem ter que aprender uma nova linguagem ou tecnologia.
+
+Além disso o Koa tem o Knex, que é um construtor de consultas SQL para Node.js, projetado para facilitar a interação com bancos de dados relacionais. Isso ofereceu para a gente uma camada de abstração poderosa sobre SQL, o que simplifica muito o processo de interação com o banco de dados.
+
+O uso do Koa facilitou muito a criação do CRUD e a ligação dele como o nosso banco de dados.
+
+Colocamos um arquivo - TutorialKoa.md - para que você possa testar e ver na prática como funciona nosso crud.
+
+
+
+
+
+
+
 
 
 
