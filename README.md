@@ -479,8 +479,66 @@ Para chamar a view, utilize:
 SELECT * FROM AlunosMelhoresNotas;
 ```
 ---
+### Segurança
+
+Foram definidos três níveis de controle de acesso para conceder permissões específicas na manipulação de dados do esquema. Os cargos servem como um filtro para que um usuário possa acessar, deletar, atualizar ou apagar dados selecionados, conforme as permissões atribuídas. Os cargos definidos são: Professor, Coordenador e Diretor.
+<br/>
+Aqui foi criado os cargos:
+```sql
+CREATE ROLE professor;
+CREATE ROLE coordenador;
+CREATE ROLE diretor;
+```
+Aqui foi criado os usuários:
+```sql
+CREATE USER professor_lucas WITH PASSWORD '123';
+GRANT professor TO professor_lucas;
 
 
+CREATE USER coordenador_fulano WITH PASSWORD '123';
+GRANT coordenador TO coordenador_fulano;
+
+
+CREATE USER diretor_fulano WITH PASSWORD '123';
+GRANT diretor TO diretor_fulano;
+```
+Aqui foi definido suas respectivas permissões, as tabelas que cada cargo tem acesso e que operação é permitida realizar com esses dados:
+Professor:
+```sql
+GRANT SELECT ON disciplina TO professor;
+GRANT SELECT, UPDATE ON avaliacao TO professor;
+GRANT SELECT ON aula TO professor;
+GRANT SELECT ON obrigatoria TO professor;
+GRANT SELECT, UPDATE ON eletiva TO professor;
+GRANT SELECT, INSERT ON aluno_matricula TO professor;
+```
+Coordernador:
+```sql
+GRANT SELECT, INSERT, UPDATE, DELETE ON professor TO coordenador;
+GRANT SELECT, INSERT, UPDATE ON aluno_matricula TO coordenador;
+GRANT SELECT, INSERT, UPDATE ON aula TO coordenador;
+GRANT SELECT, INSERT, UPDATE, DELETE ON eletiva TO coordenador;
+GRANT SELECT ON obrigatoria TO coordenador;
+```
+Diretor:
+```sql
+GRANT ALL PRIVILEGES ON usuario TO diretor;
+GRANT ALL PRIVILEGES ON aluno_matricula TO diretor;
+GRANT ALL PRIVILEGES ON coordenador TO diretor;
+GRANT ALL PRIVILEGES ON professor TO diretor;
+GRANT ALL PRIVILEGES ON bibliotecario TO diretor;
+GRANT ALL PRIVILEGES ON entregador TO diretor;
+GRANT ALL PRIVILEGES ON emprestimo TO diretor;
+```
+
+**Se um usuário tentar realizar uma operação ou acessar uma tabela sem permissão:**
+A seguinte mensagem de erro aparece, como no exemplo:
+![MensagemDeErro](https://github.com/dudagomesb/EducaLivros-Online/assets/105806830/dbbd0992-f47e-471a-8b9f-2ed169ed3a3c)
+
+**Usuários que escreverem a senha ou nome de usuário incorretamente não irão ter acesso as permissões e a seguinte mensagem de erro é exibida: **
+![ErroSenha](https://github.com/dudagomesb/EducaLivros-Online/assets/105806830/a9acd196-ef5d-4ad0-af05-7256c1da495b)
+
+Com essas medidas, torna o banco de dados mais direcionado e protegido de situações adversas em relação aos dados do ambiente escolar.
 
 
 
