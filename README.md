@@ -531,11 +531,10 @@ GRANT ALL PRIVILEGES ON entregador TO diretor;
 GRANT ALL PRIVILEGES ON emprestimo TO diretor;
 ```
 
-**Se um usuário tentar realizar uma operação ou acessar uma tabela sem permissão:**
-A seguinte mensagem de erro aparece, como no exemplo:<br/>
-<![MensagemDeErro](https://github.com/dudagomesb/EducaLivros-Online/assets/105806830/dbbd0992-f47e-471a-8b9f-2ed169ed3a3c)
+#### Se um usuário tentar realizar uma operação ou acessar uma tabela sem permissão, a seguinte mensagem de erro é exibida:
+![MensagemDeErro](https://github.com/dudagomesb/EducaLivros-Online/assets/105806830/dbbd0992-f47e-471a-8b9f-2ed169ed3a3c)
 
-**Usuários que escreverem a senha ou nome de usuário incorretamente não irão ter acesso as permissões e a seguinte mensagem de erro é exibida:**
+#### Usuários que escreverem a senha ou nome de usuário incorretamente não irão ter acesso as permissões e a seguinte mensagem de erro é exibida:
 ![ErroSenha](https://github.com/dudagomesb/EducaLivros-Online/assets/105806830/a9acd196-ef5d-4ad0-af05-7256c1da495b)
 Com essas medidas, torna o banco de dados mais direcionado e protegido de situações adversas em relação aos dados do ambiente escolar.
 
