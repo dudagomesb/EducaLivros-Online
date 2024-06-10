@@ -540,7 +540,7 @@ Com essas medidas, torna o banco de dados mais direcionado e protegido de situa�
 
 ## Normalização para a Terceira Forma Normal (3NF)
 
-**Antes de tudo: Colocamos um arquivo Sql (CodigoSqlRevisado.sql) onde tem todas as mudanças nas tabelas.**
+**Antes de tudo: Colocamos um arquivo Sql [CodigoSqlRevisado.sql](CodigoSqlRevisado.sql) onde tem todas as mudanças nas tabelas.**
 
 A Terceira Forma Normal (3NF) é uma forma de organização de um banco de dados que tem como objetivo eliminar a redundância de dados e garantir a integridade dos mesmos. Para que uma tabela esteja na 3NF, ela deve:
 
@@ -679,11 +679,11 @@ O uso do Koa facilitou muito a criação do CRUD e a ligação dele como o nosso
 
 *O Crud foi feito nas tabelas livro, usuário e emprestimo.*
 
-### **Colocamos um arquivo - TutorialKoa.md - para que você possa testar e ver na prática como funciona nosso crud.**
+### **Colocamos um arquivo - [TutorialKoa.md](TutorialKoa.md) - para que você possa testar e ver na prática como funciona nosso crud.**
+
 
 **Fizemos um vídeo mostrando o funcionamento do nosso Crud. Veja o vídeo clicando aqui:
-[[Assista ao vídeo]](movie/educa_livros_mostrando_crud.mp4)**
-
+[Clique aqui para baixar e assistir ao vídeo de demonstração](https://universidadecatolica-my.sharepoint.com/:v:/g/personal/matheus_2019202314_unicap_br/EU5ETTlMQ3tLqtVgKD-sMXUBlixjHg8jf6Ef26Ega84CUQ?e=nE1pC5&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D).** Ou baixe o vídeo que está no nosso repositório.
 
 
 
