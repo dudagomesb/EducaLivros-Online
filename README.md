@@ -677,7 +677,12 @@ Além disso o Koa tem o Knex, que é um construtor de consultas SQL para Node.js
 
 O uso do Koa facilitou muito a criação do CRUD e a ligação dele como o nosso banco de dados.
 
-Colocamos um arquivo - TutorialKoa.md - para que você possa testar e ver na prática como funciona nosso crud.
+*O Crud foi feito nas tabelas livro, usuário e emprestimo.*
+
+### **Colocamos um arquivo - TutorialKoa.md - para que você possa testar e ver na prática como funciona nosso crud.**
+
+**Fizemos um vídeo mostrando o funcionamento do nosso Crud. Veja o vídeo clicando aqui:
+[[Assista ao vídeo]](movie/educa_livros_mostrando_crud.mp4)**
 
 
 

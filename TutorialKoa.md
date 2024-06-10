@@ -226,13 +226,15 @@ node index.js
 
 Abra o Postman:
 - Selecione o método GET.
-- Insira a URL: http://localhost:3000/users.
+- Insira a URL: http://localhost:3000/users
 - Clique em Send.
+
+![crud_get](movie/get_crud.png)
 
 
 ### Testando a Rota POST
 - Selecione o método POST.
-- Insira a URL: http://localhost:3000/users.
+- Insira a URL: http://localhost:3000/users
 - Vá para a aba Body.
 - Selecione raw e JSON.
 - Insira o seguinte JSON:
@@ -250,11 +252,16 @@ Abra o Postman:
 ```
 - Clique em Send.
 
+![crud_post](movie/post_crud.png)
+
+
 ### Testando a Rota DELETE
 
 - Selecione o método DELETE.
-- Insira a URL: http://localhost:3000/users/11.
+- Insira a URL: http://localhost:3000/users/11
 - Clique em Send.
+
+![crud_delete](movie/crud_delete.png)
 
 ### Testando a Rota UPDATE
 
@@ -264,10 +271,21 @@ Abra o Postman:
 - Insira o seguinte JSON:
 ```json
 {
-  "Nome": "Teste Usuario Atualizado"
+  "id_usuario": 11,
+  "telefone": "555555555",
+  "email": "lucas.professor@gmail.com",
+  "endereco": "Unicap",
+  "data_de_nascimento": "2001-06-21",
+  "cpf": "123.456.789-00",
+  "nome": "Professor Lucas",
+  "idade": 30
 }
+
 ```
 - Clique em Send.
+
+![crud_update](movie/update_crud.png)
+
 
 
 
